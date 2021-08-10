@@ -20,7 +20,8 @@ Do the following:
    HINT: no function required
 */
 
-
+const votingAge = 18;
+console.log(votingAge>=18);
 
 /*
 Task 1b - Values
@@ -33,9 +34,14 @@ Do the following:
    HINT: no function required
 */
 
-
-
-
+let numA = 7;
+let numB = 4;
+if(numB>0){
+  numA+=numB;
+}else{
+  numA-=numB;
+}
+console.log(numA);
 
 /*
 Task 1c - Convert Strings to Numbers
@@ -48,8 +54,9 @@ Do the following:
    HINT: look up the Number method
 */
 
-
-
+let numString = "1999";
+numString = Number(numString);
+console.log(numString);
 
 /*
 Task 1d - Multiply
@@ -60,10 +67,10 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a, b){
+  return a*b;
 }
-
+console.log(multiply(5,9));
 
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
@@ -76,11 +83,10 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(humanYears){
+  return 7*humanYears;
 }
-
-
+console.log(dogYears(16));
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -133,7 +139,7 @@ function hungryDog(weight, age){
 
 // Rock, Paper, Scissors - Let's play against the computer!
 /*
-Create a global variable that randomly generates the computer's choice
+Create a global variable that gets a randomly generated computer's choice
 Use Math.random to determine the computers choice (Math.random gives a random number between 0 and 1)
 
 HINT: While you can complete this with only conditionals based on strings, it may help to equate choice to a number when using Math.random()
@@ -150,11 +156,28 @@ RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors
 HINT: Remember that the order in which we pass in our arguments matters when it comes to parameters
 */
 
-function game(user, computer){
-  /*add your code here*/
+function generateRandomChoice(){
+  let temp = Math.floor(Math.random()*3);
+  if (temp===0){
+    return "scissors";
+  }else if (temp===1){
+    return "paper";
+  }else if (temp===2){
+    return "rock";
+  }
 }
+// eslint-disable-next-line no-unused-vars
+let computerChoice = generateRandomChoice();
 
-
+// eslint-disable-next-line no-unused-vars
+function game(user, computer){
+  if ((user==="rock"&&computer==="scissors")||(user==="paper"&&computer==="rock")||(user==="scissors"&&computer==="paper")){
+    return "you win!";
+  }else if(user===computer){
+    return "it's a tie";
+  }else
+    return "you lose!";
+}
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -163,12 +186,12 @@ function game(user, computer){
 /*
 Using the miles function below do the following:
 1. Receive a number of kilometers
-2. Convert the number of kiolmeters received to miles
+2. Convert the number of kilometers received to miles
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(kilometers){
+  return kilometers*0.621371;
 }
 
 
@@ -181,11 +204,9 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(centimeters){
+  return centimeters/30.48;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -197,8 +218,10 @@ Using the annoyingSong function below do the following:
     "{number} bottles of soda on the wall, {number} bottles of soda, take one down pass it around {number left over} bottles of soda on the wall"
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+function annoyingSong(countDownNumber){
+  let valueString = countDownNumber.toString();
+  let oneLess = (countDownNumber-1).toString();
+  return valueString + " bottles of soda on the wall, " + valueString + " bottles of soda, take one down pass it around " + oneLess + " bottles of soda on the wall";
 }
 
 
@@ -217,8 +240,18 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(percentage){
+  if(percentage>=90){
+    return "you got an A";
+  }else if(percentage>=80){
+    return "you got a B";
+  }else if(percentage>=70){
+    return "you got a C";
+  }else if(percentage>=60){
+    return "you got a D";
+  }else{
+    return "you got an F";
+  }
 }
 
 
@@ -235,9 +268,16 @@ HINT - you may need to study tomorrow's content on arrays
 HINT - try looking up the .includes() method
 */
 
-
-function vowelCounter(/*add your code here*/) {
-  /*add your code here*/
+const vowelsArray = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+// eslint-disable-next-line no-unused-vars
+function vowelCounter(string) {
+  let vowels = 0;
+  for (let i=0;i<string.length;i++){
+    if(vowelsArray.includes(string[i])){
+      vowels++;
+    }
+  }
+  return vowels;
 }
 
 
